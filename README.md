@@ -1,4 +1,4 @@
-# Markdown 全格式转换工具
+# anyfile2md · 任意文件转 Markdown
 
 把常见办公 / 文档 / 图片文件一键转成 Markdown。**把文件拖到脚本图标上就完成转换**。
 

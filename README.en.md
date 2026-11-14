@@ -1,4 +1,4 @@
-# All-Format to Markdown Converter
+# anyfile2md — anything to Markdown
 
 Drag and drop office documents, e-books or images onto a script — get clean Markdown back.
 

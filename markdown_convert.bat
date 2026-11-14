@@ -1,6 +1,6 @@
 @echo off
 rem ============================================
-rem  All-Format to Markdown - drag & drop entry
+rem  anyfile2md - drag & drop entry
 rem  Drop file(s) onto this .bat icon.
 rem  Default: convert + pandoc clean-up.
 rem ============================================

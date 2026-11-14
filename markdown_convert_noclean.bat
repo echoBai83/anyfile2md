@@ -1,6 +1,6 @@
 @echo off
 rem ============================================
-rem  All-Format to Markdown - raw output (no clean)
+rem  anyfile2md - raw output (no clean)
 rem  Same as markdown_convert.bat but skips
 rem  the pandoc GFM clean-up step.
 rem ============================================
