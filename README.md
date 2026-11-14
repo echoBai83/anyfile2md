@@ -111,13 +111,27 @@ markdown自动转化\
 
 ---
 
----
-
 ## 便携版（免安装）
 
 不想折腾 Python 依赖的话，可以直接下载 **Release** 页面的 `anyfile2md-v0.1.0-win64.zip`：包内已带好 `lib/` 与 `Tesseract-OCR/`，解压即用，不需要 `pip install`（仍需机器上有 Python 3.10+ 解释器）。
 
 需要注意：**包内一旦存在 `lib/`，程序就进入便携模式**，只使用包内自带的 pandoc / tesseract，不再读取系统 `PATH` 上的安装。这是为了保证行为可复现——用系统工具请用源码版。
+
+### 补装 pandoc（.docx / .pptx / .html 需要）
+
+pandoc 没有打进便携包（官方 exe 单文件 233MB，超过 GitHub 单文件上限），Release 页把它作为**独立资产**提供：
+
+1. 下载 [`pandoc-3.8.3-windows-x86_64.zip`](https://github.com/echoBai83/anyfile2md/releases/download/v0.1.0/pandoc-3.8.3-windows-x86_64.zip)（官方原版，约 39MB）
+2. 解压出里面的 `pandoc.exe`，放到便携包的 `pandoc\` 目录下：
+   ```
+   anyfile2md-v0.1.0\
+   └── pandoc\
+       └── pandoc.exe
+   ```
+3. 重新运行即可，程序会自动识别，无需任何配置
+
+> 只想转 PDF / Excel / CSV / 图片 / 电子书的话不需要这一步。
+> 也可以不用打包版：装到系统里（`winget install --id JohnMacFarlane.Pandoc`）然后改用源码版。
 
 ## 已知限制
 

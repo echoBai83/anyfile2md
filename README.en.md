@@ -97,6 +97,23 @@ Note: **the presence of a local `lib/` switches the program into portable mode**
 bundled pandoc / tesseract and ignores anything installed on the system `PATH`. That keeps behaviour
 reproducible; use the source build if you want system-wide tool discovery.
 
+### Adding pandoc (.docx / .pptx / .html need it)
+
+pandoc is not bundled (its official exe is 233MB, over GitHub's per-file limit); the Release page ships
+it as a **separate asset**:
+
+1. Download [`pandoc-3.8.3-windows-x86_64.zip`](https://github.com/echoBai83/anyfile2md/releases/download/v0.1.0/pandoc-3.8.3-windows-x86_64.zip) (official build, ~39MB)
+2. Extract `pandoc.exe` into the portable folder's `pandoc\` directory:
+   ```
+   anyfile2md-v0.1.0\
+   └── pandoc\
+       └── pandoc.exe
+   ```
+3. Run again — it is auto-detected, no configuration needed.
+
+> Not required for PDF / Excel / CSV / images / e-books.
+> Alternatively install pandoc system-wide and use the source build instead.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

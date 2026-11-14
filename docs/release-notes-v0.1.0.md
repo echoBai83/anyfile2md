@@ -29,14 +29,26 @@ Drag PDF / Word / PPT / Excel / images / e-books onto a script and get Markdown 
 
 两种处理方式：
 
-```bat
-:: 装进包内（推荐，保持自包含）
-::   下载 pandoc 的 windows-x86_64.zip，解压出 pandoc.exe 放到
-::   anyfile2md-v0.1.0\pandoc\pandoc.exe，程序会自动识别
+**方式一：从本 Release 下载（推荐）**
 
-:: 或用环境变量临时指向
+1. 下载同页面的独立资产 `pandoc-3.8.3-windows-x86_64.zip`（官方原版，约 39MB）
+2. 解压出 `pandoc.exe`，放到便携包内：
+
+```
+anyfile2md-v0.1.0\
+└── pandoc\
+    └── pandoc.exe
+```
+
+3. 重新运行即可自动识别，无需配置
+
+**方式二：用环境变量指向已有的 pandoc**
+
+```bat
 set PANDOC=D:\path\to\pandoc.exe
 ```
+
+> 只转 PDF / Excel / CSV / 图片 / 电子书的话，不需要 pandoc。
 
 #### 用法
 
@@ -78,8 +90,20 @@ The portable build deliberately **ignores a pandoc installed on your system**: a
 
 To add it:
 
-- drop `pandoc.exe` into `anyfile2md-v0.1.0\pandoc\pandoc.exe` (auto-detected), or
-- set the `PANDOC` environment variable to point at it.
+1. Download the separate asset `pandoc-3.8.3-windows-x86_64.zip` from this same release (official build, ~39MB)
+2. Extract `pandoc.exe` into the portable folder:
+
+```
+anyfile2md-v0.1.0\
+└── pandoc\
+    └── pandoc.exe
+```
+
+3. Run again — auto-detected, no configuration needed
+
+Alternatively, point the `PANDOC` environment variable at an existing `pandoc.exe`.
+
+> Not needed for PDF / Excel / CSV / images / e-books.
 
 #### Usage
 
