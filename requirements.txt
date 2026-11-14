@@ -1,0 +1,10 @@
+# Core deps, pinned to the versions this tool was tested against.
+# `setup_deps.py --upgrade` rewrites the pins below and keeps these comments.
+# 核心依赖：PDF / 电子书 → Markdown（同时带入 pymupdf、pymupdf-layout）
+pymupdf4llm==1.28.2
+# Excel / CSV → Markdown 表格
+pandas==3.0.6
+# DataFrame.to_markdown() 的表格渲染后端
+tabulate==0.10.0
+# 读取 .xlsx
+openpyxl==3.1.5

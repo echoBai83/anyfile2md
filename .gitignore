@@ -1,0 +1,23 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ---- 本地安装的依赖（体积大，不进仓库；用 install.bat 重装）----
+lib/
+Tesseract-OCR/
+pandoc/
+pandoc.exe
+
+# ---- 转换产物（避免误提交测试输出）----
+*_raw.md
+*_ocr.txt
+
+# ---- 系统 / 编辑器 ----
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
