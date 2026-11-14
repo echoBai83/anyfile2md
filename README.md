@@ -111,6 +111,14 @@ markdown自动转化\
 
 ---
 
+---
+
+## 便携版（免安装）
+
+不想折腾 Python 依赖的话，可以直接下载 **Release** 页面的 `anyfile2md-v0.1.0-win64.zip`：包内已带好 `lib/` 与 `Tesseract-OCR/`，解压即用，不需要 `pip install`（仍需机器上有 Python 3.10+ 解释器）。
+
+需要注意：**包内一旦存在 `lib/`，程序就进入便携模式**，只使用包内自带的 pandoc / tesseract，不再读取系统 `PATH` 上的安装。这是为了保证行为可复现——用系统工具请用源码版。
+
 ## 已知限制
 
 - `.doc` / `.ppt` 旧格式不支持。

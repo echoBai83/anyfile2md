@@ -87,6 +87,16 @@ python converter.py a.png --no-ocr
 - OCR only runs for images / scanned PDFs.
 - Files are processed and released one at a time.
 
+## Portable build
+
+Don't want to set up dependencies? Grab `anyfile2md-v0.1.0-win64.zip` from the **Releases** page. It
+ships `lib/` and `Tesseract-OCR/` pre-bundled, so there is no `pip install` (you still need a Python
+3.10+ interpreter on the machine).
+
+Note: **the presence of a local `lib/` switches the program into portable mode** — it then only uses
+bundled pandoc / tesseract and ignores anything installed on the system `PATH`. That keeps behaviour
+reproducible; use the source build if you want system-wide tool discovery.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

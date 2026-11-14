@@ -47,12 +47,26 @@ if os.path.isdir(LIB):
     sys.path.insert(0, LIB)
 
 
+def portable_mode() -> bool:
+    """便携版：包内自带 lib/（本文件同目录下存在 lib 目录）。
+
+    便携版的卖点是"零配置、不污染宿主环境"，因此外部工具只认包内自带的，
+    不借用用户 PATH 上的 pandoc / tesseract —— 除非显式用环境变量指定。
+    """
+    return os.path.isdir(LIB)
+
+
 def _search_pandoc():
     """按优先级寻找 pandoc.exe。"""
-    cands = [os.environ.get("PANDOC"),
-             os.path.join(BASE_DIR, "pandoc", "pandoc.exe"),
-             os.path.join(BASE_DIR, "pandoc.exe"),
-             shutil.which("pandoc")]
+    local = [os.path.join(BASE_DIR, "pandoc", "pandoc.exe"),
+             os.path.join(BASE_DIR, "pandoc.exe")]
+    if portable_mode():
+        # 便携版只用包内自带的 pandoc，不借用宿主机的安装
+        for c in local:
+            if os.path.isfile(c):
+                return c
+        return os.environ.get("PANDOC") if os.path.isfile(os.environ.get("PANDOC") or "") else None
+    cands = [os.environ.get("PANDOC")] + local + [shutil.which("pandoc")]
     cands += sorted(glob.glob(os.path.join(
         os.path.expanduser("~"), "AppData", "Local", "Pandoc", "*", "pandoc.exe")),
         reverse=True)
@@ -66,9 +80,14 @@ def _search_pandoc():
 
 def _search_tesseract():
     """按优先级寻找 tesseract.exe。"""
-    cands = [os.environ.get("TESSERACT"),
-             os.path.join(BASE_DIR, "Tesseract-OCR", "tesseract.exe"),
-             shutil.which("tesseract")]
+    local = [os.path.join(BASE_DIR, "Tesseract-OCR", "tesseract.exe")]
+    if portable_mode():
+        # 便携版只用包内自带的 tesseract
+        for c in local:
+            if os.path.isfile(c):
+                return c
+        return os.environ.get("TESSERACT") if os.path.isfile(os.environ.get("TESSERACT") or "") else None
+    cands = [os.environ.get("TESSERACT")] + local + [shutil.which("tesseract")]
     cands += sorted(glob.glob(os.path.join(
         os.environ.get("ProgramFiles", r"C:\Program Files"),
         "Tesseract-OCR", "tesseract.exe")))
